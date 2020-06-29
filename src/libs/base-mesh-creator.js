@@ -36,8 +36,16 @@ export default {
 
   // 由几何体创建网格并加入场景
   addGeometryToScene(geometry) {
-    var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    var material = new THREE.MeshBasicMaterial({ color: 0x156289 });
     var cube = new THREE.Mesh(geometry, material);
     this.scene.add(cube);
+
+    // 为其添加线框
+    var lineMaterial = new THREE.LineBasicMaterial({
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.5
+    });
+    this.scene.add(new THREE.LineSegments(geometry, lineMaterial));
   }
 };
